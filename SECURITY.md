@@ -68,11 +68,22 @@ flowchart TD
 
 ## Project/file structure
 
+GitHub deployed repo:
+
 ```text
 .
 ├── _headers
+├── index.html
 ├── README.md
 ├── SECURITY.md
+└── tests/
+    └── rendered-html.test.mjs
+```
+
+Local editing workspace:
+
+```text
+.
 ├── .gitignore
 ├── .openai/hosting.json
 ├── static/
@@ -116,4 +127,3 @@ Before launch, add a new security review for:
 - structured application logs without sensitive data;
 - privacy-policy updates for collected data;
 - incident response and data deletion process.
-
