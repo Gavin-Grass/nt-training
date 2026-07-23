@@ -8,8 +8,22 @@ async function readProjectFile(path) {
   return readFile(new URL(path, root), "utf8");
 }
 
+async function readFirstAvailable(paths) {
+  for (const path of paths) {
+    try {
+      return await readProjectFile(path);
+    } catch (error) {
+      if (error?.code !== "ENOENT") {
+        throw error;
+      }
+    }
+  }
+
+  throw new Error(`None of these files exist: ${paths.join(", ")}`);
+}
+
 test("static website contains the active Nia Hagler content", async () => {
-  const html = await readProjectFile("static/index.html");
+  const html = await readFirstAvailable(["static/index.html", "index.html"]);
 
   assert.match(html, /<title>Nia Hagler Wrestling — Private Training in Southern Utah<\/title>/);
   assert.match(html, /NIA HAGLER/);
