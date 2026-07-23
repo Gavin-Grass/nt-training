@@ -23,8 +23,17 @@ See [SECURITY.md](SECURITY.md) for the detailed security and operations checklis
 ```text
 .
 ├── _headers                  # Cloudflare security headers
+├── index.html                # Deployed static website
 ├── README.md                 # Project overview
 ├── SECURITY.md               # Security checklist, diagrams, and operations notes
+└── tests/
+    └── rendered-html.test.mjs # Security/content smoke tests
+```
+
+The local editing workspace also keeps source/reference files used while building the site:
+
+```text
+.
 ├── .openai/hosting.json      # Sites hosting configuration
 ├── static/
 │   ├── index.html            # Editable source version
@@ -48,4 +57,3 @@ See [SECURITY.md](SECURITY.md) for the detailed security and operations checklis
 npm run build
 npm test
 ```
-
